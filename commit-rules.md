@@ -5,20 +5,24 @@
 ---
 
 ## 🏗️ Phase 1: Pre-Code Discovery
-- [ ] **Jira Alignment:** Have I met every single "Acceptance Criteria" (AC) listed in the task?
+- [ ] **Jira Specification:** Is jira clear enough or ther are some gray spots for me?
 - [ ] **Context Gathering:** Do I know why this is being built? (Understanding the business concern).
+- [ ] **Jira Alignment:** Have I met every single "Acceptance Criteria" (AC) listed in the task?
 - [ ] **Bottleneck Analysis:** - **Load:** How does this scale? Is it $O(n)$ or $O(n^2)$?
-    - **I/O:** Am I making unnecessary database calls or API requests in a loop?
+- [ ] **Memory Analysis:** - Is Code memory safe or can it possibly lead into memory leakage?
+- [ ] **I/O:** Am I making unnecessary database calls or API requests in a loop?
 - [ ] **Edge Case Audit:** What happens if the input is `nil`, `empty`, or the database returns `ErrNoRows`?
 
 ---
 
 ## 💻 Phase 2: Implementation (The Go Way)
+- [ ] **Linting:** Are linting tools running correctly with no warnings.
 - [ ] **Compilation:** Does the code build without warnings? (`go build ./...`)
 - [ ] **Idiomatic Go:**
     - [ ] No "Magic Numbers" (use constants).
     - [ ] Small, focused functions.
     - [ ] Correct use of `internal/` vs `pkg/` folders.
+    - [ ] Goroutines have been placed with right pattern and are canceled with context done signal.
 - [ ] **Error Handling:** - [ ] Errors are wrapped with context: `fmt.Errorf("context: %w", err)`.
     - [ ] No ignored errors (no `_ = function()`).
 - [ ] **Concurrency Safety:** - [ ] If using Goroutines, did I run the race detector? (`go test -race ./...`)
